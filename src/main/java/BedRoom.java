@@ -22,4 +22,9 @@ public class BedRoom {
             this.guests.add(guest);
         }
     }
+
+    public void removeGuest() {
+        this.guests.remove(0);
+    }
+
 }
