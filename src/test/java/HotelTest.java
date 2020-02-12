@@ -13,11 +13,12 @@ public class HotelTest {
     private Guest guest;
     private Hotel hotel;
     private ArrayList<BedRoom> bedRooms;
+    private Booking booking;
 
     @Before
     public void before(){
-        bedRoom = new BedRoom(1, 2, "Double");
-        bedRoom1 = new BedRoom(2, 2, "Double");
+        bedRoom = new BedRoom(1, 2, "Double", 40);
+        bedRoom1 = new BedRoom(2, 2, "Double", 30);
         bedRooms = new ArrayList<BedRoom>();
         bedRooms.add(bedRoom);
         bedRooms.add(bedRoom1);
@@ -29,6 +30,9 @@ public class HotelTest {
 
         guest = new Guest("Jimmy");
         hotel = new Hotel("Fawlty Coders", bedRooms, conferenceRooms);
+
+        booking = new Booking(bedRoom, 5);
+
     }
 
     @Test
@@ -65,8 +69,23 @@ public class HotelTest {
 
     @Test
     public void can_make_booking_on_bedroom() {
-        hotel.bookBedRoom(bedRoom);
-        assertEquals();
+        hotel.bookBedRoom(bedRoom, 5);
+        assertEquals(1, booking.getBedRoomNumber(bedRoom));
+        assertEquals(5, booking.getNightsBooked());
+    }
+
+    @Test
+    public void can_calculate_total_booking_bill(){
+        Booking localBooking = hotel.bookBedRoom(bedRoom, 5);
+        assertEquals(200, hotel.calculateBookingBill(localBooking));
+        Booking localBooking2 = hotel.bookBedRoom(bedRoom1, 3);
+        assertEquals(90, hotel.calculateBookingBill(localBooking2));
+    }
+
+    @Test
+    public void can_find_vacant_rooms() {
+        hotel.addGuestToBedRoom(bedRoom, guest);
+        assertEquals(1, hotel.findVacantRooms().size());
     }
 
 }

@@ -8,8 +8,19 @@ public class Booking {
         this.nightsBooked = nightsBooked;
     }
 
+    public int getBedRoomNumber(BedRoom bedroom) {
+        return bedRoom.getBedRoomNumber();
+    }
 
-    public static void bookBedRoom(BedRoom bedRoom) {
+    public int getBedRoomNightlyRate() {
+        return bedRoom.getNightlyRate();
+    }
 
+    public int getNightsBooked() {
+        return this.nightsBooked;
+    }
+
+    public static Booking bookBedRoom(BedRoom bedRoom, int numberOfNights) {
+        return new Booking(bedRoom, numberOfNights);
     }
 }

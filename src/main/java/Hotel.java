@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.BitSet;
 
 public class Hotel {
     private String name;
@@ -36,7 +37,22 @@ public class Hotel {
         conferenceRoom.removeGuest();
     }
 
-    public void bookBedRoom(BedRoom bedRoom) {
-        Booking.bookBedRoom(bedRoom);
+    public Booking bookBedRoom(BedRoom bedRoom, int numberOfNights) {
+        return Booking.bookBedRoom(bedRoom, numberOfNights);
+    }
+
+    public int calculateBookingBill(Booking localBooking) {
+        int total = localBooking.getNightsBooked() * localBooking.getBedRoomNightlyRate();
+        return total;
+    }
+
+    public ArrayList findVacantRooms() {
+        ArrayList<BedRoom> vacantBedrooms = new ArrayList<BedRoom>();
+        for (BedRoom bedRoom : this.bedRooms){
+            if (bedRoom.guestCount() == 0){
+                vacantBedrooms.add(bedRoom);
+            }
+        }
+        return vacantBedrooms;
     }
 }
