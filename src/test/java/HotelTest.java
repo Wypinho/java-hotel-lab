@@ -38,16 +38,35 @@ public class HotelTest {
     }
 
     @Test
-    public void add_guest_to_hotel() {
-        hotel.addGuest(bedRoom, guest);
+    public void add_guest_to_hotel_bedroom() {
+        hotel.addGuestToBedRoom(bedRoom, guest);
         assertEquals(1, bedRoom.guestCount());
     }
 
     @Test
-    public void remove_guest_from_hotel() {
-        hotel.addGuest(bedRoom, guest);
-        hotel.removeGuest(bedRoom);
+    public void remove_guest_from_hotel_bedroom() {
+        hotel.addGuestToBedRoom(bedRoom, guest);
+        hotel.removeGuestFromBedRoom(bedRoom);
         assertEquals(0, bedRoom.guestCount());
+    }
+
+    @Test
+    public void add_guest_to_hotel_conference_room() {
+        hotel.addGuestToConferenceRoom(conferenceRoom, guest);
+        assertEquals(1, conferenceRoom.guestCount());
+    }
+
+    @Test
+    public void remove_guest_from_hotel_conference_room() {
+        hotel.addGuestToConferenceRoom(conferenceRoom, guest);
+        hotel.removeGuestFromConferenceRoom(conferenceRoom);
+        assertEquals(0, conferenceRoom.guestCount());
+    }
+
+    @Test
+    public void can_make_booking_on_bedroom() {
+        hotel.bookBedRoom(bedRoom);
+        assertEquals();
     }
 
 }

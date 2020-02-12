@@ -9,6 +9,7 @@ public class Hotel {
         this.name = name;
         this.bedRooms = bedRooms;
         this.conferenceRooms = conferenceRooms;
+
     }
 
     public int bedroomCount() {
@@ -19,11 +20,23 @@ public class Hotel {
         return this.conferenceRooms.size();
     }
 
-    public void addGuest(BedRoom bedRoom, Guest guest) {
+    public void addGuestToBedRoom(BedRoom bedRoom, Guest guest) {
         bedRoom.addGuest(guest);
     }
 
-    public void removeGuest(BedRoom bedRoom) {
+    public void removeGuestFromBedRoom(BedRoom bedRoom) {
         bedRoom.removeGuest();
+    }
+
+    public void addGuestToConferenceRoom(ConferenceRoom conferenceRoom, Guest guest) {
+        conferenceRoom.addGuest(guest);
+    }
+
+    public void removeGuestFromConferenceRoom(ConferenceRoom conferenceRoom) {
+        conferenceRoom.removeGuest();
+    }
+
+    public void bookBedRoom(BedRoom bedRoom) {
+        Booking.bookBedRoom(bedRoom);
     }
 }

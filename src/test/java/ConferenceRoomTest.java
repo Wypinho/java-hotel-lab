@@ -33,4 +33,5 @@ public class ConferenceRoomTest {
         assertEquals(3, conferenceRoom.guestCount());
     }
 
+
 }
