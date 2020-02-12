@@ -22,7 +22,9 @@ public class Hotel {
     }
 
     public void addGuestToBedRoom(BedRoom bedRoom, Guest guest) {
-        bedRoom.addGuest(guest);
+        if (bedRoom.guestCount() == 0) {
+            bedRoom.addGuest(guest);
+        }
     }
 
     public void removeGuestFromBedRoom(BedRoom bedRoom) {

@@ -11,6 +11,7 @@ public class HotelTest {
     private ConferenceRoom conferenceRoom;
     private ArrayList<ConferenceRoom> conferenceRooms;
     private Guest guest;
+    private Guest guest1;
     private Hotel hotel;
     private ArrayList<BedRoom> bedRooms;
     private Booking booking;
@@ -29,6 +30,7 @@ public class HotelTest {
 
 
         guest = new Guest("Jimmy");
+        guest1 = new Guest("Johnny");
         hotel = new Hotel("Fawlty Coders", bedRooms, conferenceRooms);
 
         booking = new Booking(bedRoom, 5);
@@ -86,6 +88,13 @@ public class HotelTest {
     public void can_find_vacant_rooms() {
         hotel.addGuestToBedRoom(bedRoom, guest);
         assertEquals(1, hotel.findVacantRooms().size());
+    }
+
+    @Test
+    public void cant_add_guest_to_occupied_room(){
+        hotel.addGuestToBedRoom(bedRoom, guest);
+        hotel.addGuestToBedRoom(bedRoom, guest1);
+        assertEquals(1, bedRoom.guestCount());
     }
 
 }
