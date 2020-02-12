@@ -1,23 +1,15 @@
 import java.util.ArrayList;
 
-public class Room {
+public class BedRoom {
     private int bedroomNumber;
     private int capacity;
     private ArrayList<Guest> guests;
     private String type;
-    private String conferenceRoomName;
 
-//    bedroom constructor
-    public Room(int bedroomNumber, int capacity, String type){
+    public BedRoom(int bedroomNumber, int capacity, String type){
         this.bedroomNumber = bedroomNumber;
         this.capacity = capacity;
         this.type = type;
-        this.guests = new ArrayList<Guest>();
-    }
-
-    public Room(String conferenceRoomName, int capacity){
-        this.conferenceRoomName = conferenceRoomName;
-        this.capacity = capacity;
         this.guests = new ArrayList<Guest>();
     }
 
@@ -26,6 +18,8 @@ public class Room {
     }
 
     public void addGuest(Guest guest) {
-        this.guests.add(guest);
+        if (this.guests.size() < capacity) {
+            this.guests.add(guest);
+        }
     }
 }
