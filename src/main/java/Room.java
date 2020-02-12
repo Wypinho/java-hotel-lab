@@ -24,4 +24,8 @@ public class Room {
     public int guestCount() {
         return this.guests.size();
     }
+
+    public void addGuest(Guest guest) {
+        this.guests.add(guest);
+    }
 }
